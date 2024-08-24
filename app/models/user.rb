@@ -39,16 +39,22 @@ class User < ApplicationRecord
 
   # https://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks
   def top_artists
+    return [] unless spotify_accessible?
+
     spotify_user.top_artists
   end
 
   # https://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks
   def top_tracks
+    return [] unless spotify_accessible?
+
     spotify_user.top_tracks
   end
 
   # https://developer.spotify.com/documentation/web-api/reference/get-followed
   def following_artists
+    return [] unless spotify_accessible?
+
     spotify_user.following(type: 'artist')
   end
 end
