@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   root to: "pages#welcome"
-  get '/auth/spotify/callback', to: 'users#spotify'
+  get "/auth/spotify/callback", to: "users#spotify"
 end

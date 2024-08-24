@@ -22,7 +22,7 @@ class User < ApplicationRecord
   def spotify_user
     RSpotify::User.new(
       {
-        'credentials' => {
+        "credentials" => {
           "token" => self.spotify_access_token,
           "refresh_token" => self.spotify_refresh_token,
           "access_refresh_callback" =>
@@ -32,7 +32,7 @@ class User < ApplicationRecord
               self.save_new_access_token(new_access_token)
             }
         },
-        'id' => self.spotify_id
+        "id" => self.spotify_id
       }
     )
   end
@@ -55,6 +55,6 @@ class User < ApplicationRecord
   def following_artists
     return [] unless spotify_accessible?
 
-    spotify_user.following(type: 'artist')
+    spotify_user.following(type: "artist")
   end
 end
