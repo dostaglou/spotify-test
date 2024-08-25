@@ -11,6 +11,11 @@
 #  spotify_id            :string
 #
 class User < ApplicationRecord
+  def save_new_access_token(new_access_token)
+    self.update(spotify_access_token: new_access_token)
+    self.save
+  end
+
   def spotify_accessible?
     return false if self.spotify_access_token.nil?
     return false if self.spotify_refresh_token.nil?
